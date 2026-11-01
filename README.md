@@ -4,7 +4,7 @@
 
 This repository contains the working application, not a landing-page mockup. Start without credentials in the playground; connect Twitch and optionally OpenAI when ready.
 
-[Download v1.1.1](https://github.com/Prasannaverse13/ChatPlayAI/releases/tag/v1.1.1) · [Quick start](#start) · [Architecture](#architecture) · [CI results](https://github.com/Prasannaverse13/ChatPlayAI/actions)
+ [Quick start](#start) · [Architecture](#architecture) · [CI results](https://github.com/Prasannaverse13/ChatPlayAI/actions)
 
 ![ChatPlay AI illustrated game world](public/images/chatplay-world.png)
 
