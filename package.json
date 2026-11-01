@@ -1,0 +1,51 @@
+{
+  "name": "chatplay-ai",
+  "version": "1.1.1",
+  "private": true,
+  "type": "module",
+  "description": "A local-first Twitch community game controller for Windows.",
+  "scripts": {
+    "dev": "concurrently -k -n server,studio \"tsx watch server/index.ts\" \"vite --host 127.0.0.1\"",
+    "build": "tsc --noEmit && vite build && esbuild server/index.ts --bundle --platform=node --format=esm --packages=external --outfile=dist-server/index.js",
+    "start": "node dist-server/index.js",
+    "test": "vitest run",
+    "check": "tsc --noEmit",
+    "test:native": "node scripts/native-smoke.mjs",
+    "package": "npm run secrets && npm run build && powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/package.ps1",
+    "format": "prettier --write src server shared tests scripts/*.mjs *.ts",
+    "verify:live": "node scripts/verify-live.mjs",
+    "package:portable": "npm run secrets && npm run build && powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/package.ps1 -BundleRuntime",
+    "secrets": "node scripts/check-secrets.mjs",
+    "pretest": "npm run secrets"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/nunito-sans": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ws": "^8.18.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ws": "^8.5.13",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.1.0",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
